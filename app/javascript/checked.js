@@ -8,6 +8,10 @@ function check (){
       XHR.responseType = "jason";
       XHR.send();
       XHR.onload = () => {
+        if (XHR.status != 200) {
+          alert(`Error ${XHR.status}: ${XHR.statusText}`);
+          return null;          
+        }
         const item = XHR.response.post;
         if (item.checked === true) {
           post.setAttribute("data-check", "true");
